@@ -16,6 +16,10 @@ const userSchema = new schema({
     type: String,
     required: [true, "projectname field is required"],
   },
+  state: {
+    type: [],
+    required: [true, "projectname field is required"],
+  },
 });
 
 const User = mongoose.model("user-project", userSchema);
