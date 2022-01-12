@@ -1,15 +1,15 @@
 const router = require("express").Router();
 const Joi = require("joi");
-const { User } = require("../models/user");
+const { Admin } = require("../models/admin");
 const bcrypt = require("bcrypt");
 
-router.post("/auth", async (req, res) => {
+router.post("/adminAuth", async (req, res) => {
   try {
     const { error } = validate(req.body);
     if (error) {
       return res.status(400).send({ message: error.details[0].message });
     }
-    const user = await User.findOne({ email: req.body.email });
+    const user = await Admin.findOne({ email: req.body.email });
 
     if (!user) {
       return res.status(401).send({ message: "Invalid Email or Password" });

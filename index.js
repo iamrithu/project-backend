@@ -7,6 +7,8 @@ const connection = require("./db");
 const router = require("./routers/common_router");
 const userRoutes = require("./routers/user");
 const authRoutes = require("./routers/auth");
+const admin = require("./routers/admin");
+const admin_auth = require("./routers/admin-auth");
 
 connection();
 
@@ -16,9 +18,11 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("/user", router);
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
+app.use("/api", router);
+app.use("/api", userRoutes);
+app.use("/api", authRoutes);
+app.use("/api", admin);
+app.use("/api", admin_auth);
 
 const port = process.env.PORT || 8080;
 
