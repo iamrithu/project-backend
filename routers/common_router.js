@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const { User } = require("../models/user");
 const Project = require("../models/project");
 const GEO = require("../models/geoData");
@@ -66,7 +67,10 @@ router.put("/project/edit/:id", (req, res) => {
   });
 });
 router.post("/project/send", (req, res) => {
+  console.log(req.body);
   Project.create(req.body).then((data) => {
+    console.log(data);
+
     res.send(data);
   });
 });
@@ -89,7 +93,7 @@ router.get("/geolocation/:type", (req, res) => {
 });
 
 router.get("/geolocation/project/:projectID", (req, res) => {
-  GEO.find({ projectID: req.params.projectID }).then((data) => {
+  GEO.find({ project_id: req.params.projectID }).then((data) => {
     res.send(data);
   });
 });
@@ -113,6 +117,11 @@ router.put("/geolocation/edit/:id", (req, res) => {
 
 router.delete("/geolocation/delete/:id", (req, res) => {
   GEO.findByIdAndRemove({ _id: req.params.id }).then((data) => {
+    res.send(data);
+  });
+});
+router.delete("/geolocation/delete/all/:id", (req, res) => {
+  GEO.findOneAndDelete({ project_id: req.params.id }).then((data) => {
     res.send(data);
   });
 });
@@ -147,5 +156,9 @@ router.get("/admin/:id", (req, res) => {
     res.send(data);
   });
 });
+
+////
+
+///
 
 module.exports = router;

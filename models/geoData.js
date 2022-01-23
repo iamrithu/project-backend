@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
 const data = new schema({
-  name: { type: String, required: true },
-  type: { type: String, required: true },
-  geoData: {},
-  userID: { type: String, required: true },
-  projectID: { type: String, required: true },
+  project_id: String,
+  user_id: String,
+  project_name: String,
+  data: [],
 });
 
 const GeoLocation = mongoose.model("GeoData", data);
