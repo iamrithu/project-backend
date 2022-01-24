@@ -18,6 +18,9 @@ app.use(express.json());
 app.use(cors());
 
 // routes
+app.get("/", (req, res) => {
+  res.status(200).send("map app is running...");
+});
 app.use("/api", router);
 app.use("/api", userRoutes);
 app.use("/api", authRoutes);
