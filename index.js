@@ -27,8 +27,8 @@ app.use("/api", authRoutes);
 app.use("/api", admin);
 app.use("/api", admin_auth);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+app.listen(port || 8080, () => {
+  console.log(`listening on port 8080`);
 });
