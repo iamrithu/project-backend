@@ -22,6 +22,7 @@ router.post("/adminAuth", async (req, res) => {
       return res.status(401).send({ message: "Invalid Email or Password" });
     }
     const token = user.generateToken();
+    console.log(token);
 
     res.status(200).send({ data: token, message: "Logged in successfully" });
   } catch (error) {
