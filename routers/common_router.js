@@ -91,7 +91,11 @@ router.get("/geolocation/:type", (req, res) => {
     res.send(data);
   });
 });
-
+router.get("/geolocation/id/:id", (req, res) => {
+  GEO.find({ _id: req.params.id }).then((data) => {
+    res.send(data);
+  });
+});
 router.get("/geolocation/project/:projectID", (req, res) => {
   GEO.find({ project_id: req.params.projectID }).then((data) => {
     res.send(data);

@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 
 const data = new schema({
   project_id: String,
+  layerName: String,
   user_id: String,
   project_name: String,
   data: [],
